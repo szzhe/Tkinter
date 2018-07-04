@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time : 2018/7/4 21:20
-# @Author : szzhe
-# @File : test.py
+
 from tkinter import *
 from tkinter.ttk import *
 
