@@ -6,6 +6,7 @@ class Calculator(object):
         self.root = Tk()
         # self.root.title("Calculator")
         self.root.wm_title("Szzhe教程完整版")  # 修改窗口标题
+        self.root.title("Calculator")
         self.root.geometry("700x200+300+250")  # 设置主窗口大小，窗口所在的屏幕位置
         # self.root.maxsize(600, 400)
         # self.root.minsize(300, 240)
