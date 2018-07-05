@@ -7,7 +7,7 @@ class IDCheckGui:
     def __init__(self):
         self.root = Tk()
         self.root.title("身份信息查询")
-        self.root.geometry("700x550+300+180")
+        self.root.geometry("700x550+300+80")
         self.root['bg'] = "lightblue"
 
         self.style01 = Style()
