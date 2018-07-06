@@ -1,5 +1,7 @@
 
-from datetime import datetime,date
+from datetime import datetime
+import sys
+from tkinter.messagebox import *
 
 class IdCheck():
     '''实现身份证校验的功能'''
@@ -8,11 +10,24 @@ class IdCheck():
         self.id_number = id_number
         self.id_list = [] # 把身份证号码分离成4部分
 
+        self.file_path = sys.path[0] + "\\Image\\idarea.txt"
+        self.area_list = []
+
+        self.is_true_id_number = 0
+        self.gender = ""
+        self.birthday = ""
+        self.area_name = ""
+
         # 自动执行分离
         self.get_id_list()
+        # 自动加载区域信息
+        self.import_area_id()
+
         # 自动校验
-        self.validate_check_number()
+        self.validate_verification_code()
         self.validate_birthday()
+        self.validate_area_id()
+        self.get_gender()
 
     def get_id_list(self):
         # 区域代码
@@ -24,11 +39,12 @@ class IdCheck():
         # 校验码
         self.id_list.append(self.id_number[17:])
 
-    def validate_check_number(self):
+    def validate_verification_code(self):
         if self.get_check_number() == self.id_list[3]:
-            print("校验码正确:", self.get_check_number())
-        else:
-            print("校验码错误")
+            # print("校验码正确:", self.get_check_number())
+            self.is_true_id_number = 1
+        # else:
+        #     print("校验码错误")
 
     def get_check_number(self):
         number = self.id_number[:17]
@@ -50,10 +66,37 @@ class IdCheck():
         id_birthday = datetime(year=int(self.id_number[6:10]), month=int(self.id_number[10:12]), day=int(self.id_number[12:14]))
 
         if id_birthday > date_from and id_birthday < date_to:
-            print("生日有效")
+            # print("生日有效", date_from, date_to, id_birthday)
+            self.birthday = self.id_number[6:10] + "年" + self.id_number[10:12] + "月" + self.id_number[12:14] + "日"
         else:
             print("生日无效")
 
+    def import_area_id(self):
+        try:
+            with open(file=self.file_path, mode="r",) as fd:
+                current_line = fd.readline()
+                while current_line:
+                    current_area_list = current_line.split("\t")
+                    if len(current_area_list[0]) == 6:
+                        self.area_list.append(current_area_list)
+                    current_line = fd.readline()
+        except:
+            showinfo("系统消息", "读取文件异常")
+
+    def validate_area_id(self):
+        for index in range(len(self.area_list)):
+            if self.area_list[index][0] == self.id_list[0]:
+                # print(self.area_list[index][1])
+                self.area_name = self.area_list[index][1]
+                break
+            # if index == len(self.area_list)-1:
+            #     print("地区码不存在")
+
+    def get_gender(self):
+        if int(self.id_list[2]) % 2 == 0:
+            self.gender = "女"
+        else:
+            self.gender = "男"
 
 if __name__ == "__main__":
     this_check = IdCheck("131082198804050419")
