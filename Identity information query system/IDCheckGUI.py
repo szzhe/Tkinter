@@ -2,9 +2,9 @@ from tkinter import *
 from tkinter.ttk import *
 from tkinter.messagebox import *
 import sys
-import idcheck
+import IDCheck
 
-class IDCheckGui:
+class IDCheckGui(Tk):
 
     def __init__(self):
         self.root = Tk()
@@ -13,7 +13,6 @@ class IDCheckGui:
         self.root['bg'] = "lightblue"
 
         self.style01 = Style()
-        self.style01.configure("input.TLabel", font=("微软雅黑", 10, "bold"), foreground="lightblue", background="lightblue")
         self.style01.configure("TLabel", font=("微软雅黑", 10, "bold"), foreground="navy", background="lightblue")
         self.style01.configure("TButton", font=("微软雅黑", 10, "bold"), foreground="navy", background="lightblue")
 
@@ -22,8 +21,8 @@ class IDCheckGui:
         self.Lable_image = Label(self.root, image=self.normal_image)
         self.Lable_image.place(x=10, y=10)
 
-        self.Lable_input = Label(self.root, text="请输入身份证号码：", style="input.TLabel")
-        self.Lable_input.place(x=350, y=20)
+        self.Lable_id_input = Label(self.root, text="请输入身份证号码：")
+        self.Lable_id_input.place(x=350, y=30)
 
         self.var_input =StringVar()
         self.Entry_id_input = Entry(self.root, textvariable=self.var_input, font=("微软雅黑", 12, "bold"), width=20)
@@ -73,7 +72,7 @@ class IDCheckGui:
     def get_info(self):
         id_number = self.var_input.get()
         if len(id_number) == 18:
-            check_id = idcheck.IdCheck(id_number)
+            check_id = IDCheck.IdCheck(id_number)
             if check_id.is_true_id_number == 0 or len(check_id.birthday) == 0 or len(check_id.area_name) == 0:
                 self.var_enable.set("无效")
             else:
