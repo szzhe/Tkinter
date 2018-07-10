@@ -1,4 +1,4 @@
-from IDCheckGUI import *
+from IdIDCheckGUI import *
 
 if __name__ == "__main__":
     check_gui = IDCheckGui()

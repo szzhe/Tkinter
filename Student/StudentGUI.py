@@ -82,11 +82,10 @@ class StudentGUI(Tk):
         for i in self.Tree.get_children():
             self.Tree.delete(i)
 
+        list_student = Student.Student.student_list
         # 遍历List逐条插入
-        for index in range(len(Student.Student.student_list)):
-            self.Tree.insert("", index, value=(
-                Student.student_list[index[0], Student.student_list[index[1], Student.student_list[index[2],
-                Student.student_list[index[3], Student.student_list[index[4]))
+        for index in range(len(list_student)):
+            self.Tree.insert("", index, value=(list_student[index][0], list_student[index][1], list_student[index][2],list_student[index][3], list_student[index][4]))
 
 if __name__ == "__main__":
     this_gui = StudentGUI()

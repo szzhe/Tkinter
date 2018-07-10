@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
 from tkinter.messagebox import *
-import sys
 import IDCheck
 
 class IDCheckGui(Tk):
@@ -16,7 +15,7 @@ class IDCheckGui(Tk):
         self.style01.configure("TLabel", font=("微软雅黑", 10, "bold"), foreground="navy", background="lightblue")
         self.style01.configure("TButton", font=("微软雅黑", 10, "bold"), foreground="navy", background="lightblue")
 
-        self.fname = sys.path[0] + "\\Image\\waring.png"
+        self.fname = ".//Image//waring.png"
         self.normal_image = PhotoImage(file=self.fname)
         self.Lable_image = Label(self.root, image=self.normal_image)
         self.Lable_image.place(x=10, y=10)

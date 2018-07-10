@@ -1,6 +1,5 @@
 
 from datetime import datetime
-import sys
 from tkinter.messagebox import *
 
 class IdCheck():
@@ -10,7 +9,7 @@ class IdCheck():
         self.id_number = id_number
         self.id_list = [] # 把身份证号码分离成4部分
 
-        self.file_path = sys.path[0] + "\\Image\\idarea.txt"
+        self.file_path = ".//Image//idarea.txt"
         self.area_list = []
 
         self.is_true_id_number = 0
