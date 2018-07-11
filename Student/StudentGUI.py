@@ -33,21 +33,21 @@ class StudentGUI(Tk):
         self.Lable_title.place(x=20, y=123)
 
         self.var_total = StringVar()
-        self.Entry_total = Entry(self, textvariable=self.var_total, state=DISABLED, font=("微软雅黑", 12, "bold"), width=8)
+        self.Entry_total = Entry(self, textvariable=self.var_total, state=DISABLED, font=("微软雅黑", 9, "bold"), width=8)
         self.Entry_total.place(x=75, y=120)
 
         self.Lable_title = Label(self, text="男生人数：")
         self.Lable_title.place(x=180, y=123)
 
         self.var_male = StringVar()
-        self.Entry_total = Entry(self, textvariable=self.var_male, state=DISABLED, font=("微软雅黑", 12, "bold"), width=8)
+        self.Entry_total = Entry(self, textvariable=self.var_male, state=DISABLED, font=("微软雅黑", 9, "bold"), width=8)
         self.Entry_total.place(x=245, y=120)
 
         self.Lable_title = Label(self, text="女生人数：")
         self.Lable_title.place(x=340, y=123)
 
         self.var_female = StringVar()
-        self.Entry_total = Entry(self, textvariable=self.var_female, state=DISABLED, font=("微软雅黑", 12, "bold"), width=8)
+        self.Entry_total = Entry(self, textvariable=self.var_female, state=DISABLED, font=("微软雅黑", 9, "bold"), width=8)
         self.Entry_total.place(x=405, y=120)
 
         # 添加Treeview控件
