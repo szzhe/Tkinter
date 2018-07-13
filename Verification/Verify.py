@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from tkinter import *
 import re
 
-class Verify(Tk):
+class Verify:
 
     def __init__(self, stid:str, name:str, sex:str, mobile:str, email:str):
         self.stid = stid
@@ -67,7 +66,7 @@ class Verify(Tk):
         else:
             return 0
 
-class Verify_cls(Tk):
+class Verify_cls:
     stid = ""
     name = ""
     sex = ""
@@ -140,6 +139,53 @@ class Verify_cls(Tk):
             return 5
         else:
             return 0
+
+class Verify_static:
+
+    @staticmethod
+    def check_stid(stid):
+        pattern = re.compile(R"^95\d{4}$")
+        match_result = pattern.match(stid)
+        if match_result is None:
+            return False
+        else:
+            return True
+
+    @staticmethod
+    def check_name(name):
+        if len(name.strip()) >= 2 and len(name.strip()) <= 10:
+            for index in range(len(name.strip())):
+                if name[index] <= "\u4E00" or name[index] >= "\u9FA5":
+                    return False
+                if index == len(name.strip())-1:
+                    return True
+        else:
+            return False
+
+    @staticmethod
+    def check_sex(sex):
+        if sex.strip() in ["男", "女"]:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def check_mobile(mobile):
+        pattern = re.compile(R"^[1][35789]\d{9}$")
+        match_result = pattern.match(mobile)
+        if match_result is None:
+            return False
+        else:
+            return True
+
+    @staticmethod
+    def check_email(email):
+        pattern = re.compile(R"^\w{1,}[@]\w{1,}[.]\w{1,}$")
+        match_result = pattern.match(email)
+        if match_result is None:
+            return False
+        else:
+            return True
 
 if __name__ == "__main__":
     this_verify = Verify()

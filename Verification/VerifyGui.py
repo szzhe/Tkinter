@@ -4,7 +4,7 @@
 from tkinter import *
 from tkinter.ttk import *
 from tkinter.messagebox import *
-import Verify
+from Verify import Verify, Verify_cls, Verify_static
 
 class VerifyGui(Tk):
 
@@ -73,14 +73,15 @@ class VerifyGui(Tk):
         mobile = self.var_mobile.get()
         email = self.var_email.get()
 
-        # 实例方法调用
-        # current = Verify.Verify(stid, name, sex, mobile, email)  # 实例化
-        # check_result = current.check_all()  # 校验输入
+        # ①实例方法调用
+        current = Verify(stid, name, sex, mobile, email)  # 实例化
+        check_result = current.check_all()  # 校验输入
 
-        # 类方法调用
-        current = Verify.Verify_cls(stid, name, sex, mobile, email)
-        check_result = current.check_all()
+        # ②类方法调用
+        # current = Verify_cls(stid, name, sex, mobile, email)
+        # check_result = current.check_all()
 
+        # 调用方式为①实例方法、②类方法时启用
         if check_result == 1:
             showinfo("系统消息", "学号不符合要求[要求：95开头的6位数字]")
         elif check_result == 2:
@@ -93,6 +94,20 @@ class VerifyGui(Tk):
             showinfo("系统消息", "邮箱地址不符合要求")
         elif check_result == 0:
             showinfo("系统消息", "添加成功")
+
+        # ③实例方法调用
+        # if not Verify_static.check_stid(stid):
+        #     showinfo("系统消息", "学号不符合要求[要求：95开头的6位数字]")
+        # elif not Verify_static.check_name(name):
+        #     showinfo("系统消息", "姓名不符合要求[要求：2-10个汉字]")
+        # elif not Verify_static.check_sex(sex):
+        #     showinfo("系统消息", "性别不符合要求[要求：只能填男或者女]")
+        # elif not Verify_static.check_mobile(mobile):
+        #     showinfo("系统消息", "手机号码不符合要求[要求：11位数字]")
+        # elif not Verify_static.check_email(email):
+        #     showinfo("系统消息", "邮箱地址不符合要求")
+        # else:
+        #     showinfo("系统消息", "添加成功")
 
 if __name__ == "__main__":
     this_VerifyGui = VerifyGui()
