@@ -4,7 +4,7 @@
 from tkinter import *
 import re
 
-class Verification(Tk):
+class Verify(Tk):
 
     def __init__(self, stid:str, name:str, sex:str, mobile:str, email:str):
         self.stid = stid
@@ -76,4 +76,4 @@ class Verification(Tk):
             return 0
 
 if __name__ == "__main__":
-    this_verification = Verification()
+    this_verify = Verify()

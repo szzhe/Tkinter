@@ -4,9 +4,10 @@
 from tkinter import *
 from tkinter.ttk import *
 from tkinter.messagebox import *
-import Verification
+import Verify
+import Verify_cls
 
-class VerificationGui(Tk):
+class VerifyGui(Tk):
 
     def __init__(self):
         super().__init__()
@@ -73,11 +74,12 @@ class VerificationGui(Tk):
         mobile = self.var_mobile.get()
         email = self.var_email.get()
 
-        # 实例化
-        current = Verification.Verification(stid, name, sex, mobile, email)
+        current = Verify.Verify(stid, name, sex, mobile, email)  # 实例化
+        check_result = current.check_all()  # 校验输入
 
-        # 校验输入
-        check_result = current.check_all()
+        # current = Verify_cls.Verify_cls(stid, name, sex, mobile, email)
+        # check_result = current.check_all()
+
         if check_result == 1:
             showinfo("系统消息", "学号不符合要求[要求：95开头的6位数字]")
         elif check_result == 2:
@@ -92,5 +94,5 @@ class VerificationGui(Tk):
             showinfo("系统消息", "添加成功")
 
 if __name__ == "__main__":
-    this_VerificationGui = VerificationGui()
-    this_VerificationGui.mainloop()
+    this_VerifyGui = VerifyGui()
+    this_VerifyGui.mainloop()
